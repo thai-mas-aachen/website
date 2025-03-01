@@ -20,8 +20,31 @@
     <!-- Custom Styles -->
     <style>
       .payment-icon {
-        height: 50px;
+        height: 40px;
         width: auto;
+        transition: height 0.3s ease;
+      }
+      
+      .payment-method-card {
+        padding: 1rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Responsive adjustments */
+      @media (min-width: 576px) {
+        .payment-icon {
+          height: 45px;
+        }
+      }
+      
+      @media (min-width: 768px) {
+        .payment-icon {
+          height: 50px;
+        }
       }
     </style>
   </head>
@@ -110,47 +133,54 @@
         </div>
       
 
-       <!-- Payments -->
-       <h2 class="mt-5 mb-5">Zahlungsmöglichkeiten</h2>
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card">
-            <div class="card-body">
-              <h3 class="card-title mb-4">Wir akzeptieren folgende Zahlungsmethoden:</h3>
-              <div class="row align-items-center">
-                <div class="col-md-4 mb-3 text-center">
-                  <i class="bi bi-cash fs-2"></i>
-                  <p>Bargeld</p>
-                </div>
-                <div class="col-md-4 mb-3 text-center">
-                  <img src="assets/img/logo/payment_girocard.svg" alt="Zahlung mit EC-Karte möglich" class="payment-icon mb-2">
-                  <p>EC-Karte</p>
-                </div>
-                <div class="col-md-4 mb-3 text-center">
-                  <img src="assets/img/logo/payment_mastercard.svg" alt="Zahlung mit Mastercard möglich" class="payment-icon mb-2">
-                  <p>Mastercard</p>
-                </div>
-                <div class="col-md-4 mb-3 text-center">
-                  <img src="assets/img/logo/payment_visa.svg" alt="Zahlung mit Visa möglich" class="payment-icon mb-2">
-                  <p>Visa</p>
-                </div>
-                <div class="col-md-4 mb-3 text-center">
-                  <img src="assets/img/logo/payment_amex.svg" alt="Zahlung mit American Express möglich" class="payment-icon mb-2">
-                  <p>American Express</p>
-                </div>
-                <div class="col-md-4 mb-3 text-center">
-                  <img src="assets/img/logo/payment_googlepay.svg" alt="Google Pay" class="payment-icon mb-2">
-                  <p>Google Pay</p>
-                </div>
-                <div class="col-md-4 mb-3 text-center">
-                  <img src="assets/img/logo/payment_applepay.svg" alt="Apple Pay" class="payment-icon mb-2">
-                  <p>Apple Pay</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+       <!-- Payment Methods Section -->
+       <div class="container py-4">
+         <h2 class="text-center mb-4">Zahlungsmöglichkeiten</h2>
+         <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3 justify-content-center">
+           <div class="col text-center">
+             <div class="payment-method-card h-100">
+               <i class="bi bi-cash fs-2 mb-2"></i>
+               <p class="mb-0">Barzahlung</p>
+             </div>
+           </div>
+           <div class="col text-center">
+             <div class="payment-method-card h-100">
+               <img src="assets/img/logo/payment_girocard.svg" alt="Zahlung mit EC-Karte möglich" class="payment-icon mb-2">
+               <p class="mb-0">EC-Karte</p>
+             </div>
+           </div>
+           <div class="col text-center">
+             <div class="payment-method-card h-100">
+               <img src="assets/img/logo/payment_visa.svg" alt="Zahlung mit Visa möglich" class="payment-icon mb-2">
+               <p class="mb-0">Visa</p>
+             </div>
+           </div>
+           <div class="col text-center">
+             <div class="payment-method-card h-100">
+               <img src="assets/img/logo/payment_mastercard.svg" alt="Zahlung mit Mastercard möglich" class="payment-icon mb-2">
+               <p class="mb-0">Mastercard</p>
+             </div>
+           </div>
+           <div class="col text-center">
+             <div class="payment-method-card h-100">
+               <img src="assets/img/logo/payment_amex.svg" alt="Zahlung mit American Express möglich" class="payment-icon mb-2">
+               <p class="mb-0">American Express</p>
+             </div>
+           </div>
+           <div class="col text-center">
+             <div class="payment-method-card h-100">
+               <img src="assets/img/logo/payment_googlepay.svg" alt="Zahlung mit Google Pay möglich" class="payment-icon mb-2">
+               <p class="mb-0">Google Pay</p>
+             </div>
+           </div>
+           <div class="col text-center">
+             <div class="payment-method-card h-100">
+               <img src="assets/img/logo/payment_applepay.svg" alt="Zahlung mit Apple Pay möglich" class="payment-icon mb-2">
+               <p class="mb-0">Apple Pay</p>
+             </div>
+           </div>
+         </div>
+       </div>
     </div>
 
     </main>
