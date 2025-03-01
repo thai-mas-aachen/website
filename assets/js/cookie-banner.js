@@ -2,6 +2,19 @@ class CookieBanner extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+        this.translations = {
+            'en': {
+                message: 'This website uses cookies to improve your browsing experience and provide personalized content.',
+                accept: 'Accept',
+                reject: 'Reject'
+            },
+            'de': {
+                message: 'Diese Website verwendet Cookies, um Ihr Browsererlebnis zu verbessern und personalisierte Inhalte bereitzustellen.',
+                accept: 'Akzeptieren',
+                reject: 'Ablehnen'
+            }
+            // Add more languages here
+        };
     }
 
     connectedCallback() {
@@ -9,15 +22,14 @@ class CookieBanner extends HTMLElement {
         this.setupEventListeners();
     }
 
+    getLanguage() {
+        const htmlLang = document.documentElement.lang;
+        return this.translations[htmlLang] ? htmlLang : 'de';
+    }
+
     render() {
-        const isEnglish = document.documentElement.lang === 'en';
-        
-        const text = isEnglish 
-            ? 'This website uses cookies to improve your browsing experience and provide personalized content.'
-            : 'Diese Website verwendet Cookies, um Ihr Browsererlebnis zu verbessern und personalisierte Inhalte bereitzustellen.';
-        
-        const acceptText = isEnglish ? 'Accept' : 'Akzeptieren';
-        const rejectText = isEnglish ? 'Reject' : 'Ablehnen';
+        const lang = this.getLanguage();
+        const t = this.translations[lang];
 
         this.shadowRoot.innerHTML = `
             <style>
@@ -46,6 +58,10 @@ class CookieBanner extends HTMLElement {
                     border: none;
                     border-radius: 4px;
                     cursor: pointer;
+                    transition: opacity 0.2s;
+                }
+                button:hover {
+                    opacity: 0.9;
                 }
                 .accept {
                     background-color: #4CAF50;
@@ -58,11 +74,11 @@ class CookieBanner extends HTMLElement {
             </style>
             <div class="cookie-banner">
                 <div class="cookie-text">
-                    ${text}
+                    ${t.message}
                 </div>
                 <div class="cookie-buttons">
-                    <button class="accept">${acceptText}</button>
-                    <button class="reject">${rejectText}</button>
+                    <button class="accept">${t.accept}</button>
+                    <button class="reject">${t.reject}</button>
                 </div>
             </div>
         `;
@@ -115,5 +131,4 @@ function getCookie(name) {
     return '';
 }
 
-// Run the check when the page loads
 window.addEventListener('load', checkCookieConsent);
