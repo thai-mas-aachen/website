@@ -1,16 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-language" content="de">
     <meta name="description" content="Seite nicht gefunden - Traditionelle Thaimassage Aachen ➤ Zurück zur Startseite oder Kontaktseite">
     <title>Seite nicht gefunden (404) | Traditionelle Thaimassage Aachen</title>
     <meta name="robots" content="noindex, follow">
-    <script type="text/javascript">
-        // Sofortige Weiterleitung zur Kontaktseite
-        window.location.href = "https://thai-massage-aachen.de/kontakt.html";
+    
+    <!-- CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- JavaScript -->
+    <script src="assets/js/webComponents.js"></script>
+    <script src="assets/js/cookie-banner.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Delayed redirect after 3 seconds
+        setTimeout(function() {
+            window.location.href = "https://thai-massage-aachen.de/kontakt.html";
+        }, 3000);
     </script>
 </head>
 <body>
-    Wenn Sie nicht automatisch weitergeleitet werden, <a href="https://thai-massage-aachen.de/kontakt.html">klicken Sie hier</a>.
+    <main-header></main-header>
+
+    <main class="container py-5 text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class="mb-4">Seite nicht gefunden</h1>
+                <p class="lead mb-4">
+                    Entschuldigung, die gesuchte Seite wurde nicht gefunden. 
+                    Sie werden in wenigen Sekunden automatisch zur Kontaktseite weitergeleitet.
+                </p>
+                <div class="mb-4">
+                    <a href="index.html" class="btn btn-primary me-2">Zur Startseite</a>
+                    <a href="kontakt.html" class="btn btn-secondary">Zur Kontaktseite</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <main-footer></main-footer>
+    </footer>
 </body>
 </html>
