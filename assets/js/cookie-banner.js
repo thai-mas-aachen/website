@@ -12,8 +12,12 @@ class CookieBanner extends HTMLElement {
                 message: 'Diese Website verwendet Cookies, um Ihr Browsererlebnis zu verbessern und personalisierte Inhalte bereitzustellen.',
                 accept: 'Akzeptieren',
                 reject: 'Ablehnen'
+            },
+            'fr': {
+                message: 'Ce site utilise des cookies pour améliorer votre expérience de navigation et fournir du contenu personnalisé.',
+                accept: 'Accepter',
+                reject: 'Refuser'
             }
-            // Add more languages here
         };
     }
 

@@ -19,6 +19,15 @@ class MainHeader extends HTMLElement {
                 prices: 'Preise',
                 contact: 'Kontakt',
                 logoAlt: 'Logo der Traditionellen Thaimassage Aachen - Zurück zur Startseite'
+            },
+            'fr': {
+                home: 'Accueil',
+                team: 'Notre Équipe',
+                gallery: 'Galerie',
+                massages: 'Massages',
+                prices: 'Tarifs',
+                contact: 'Contact',
+                logoAlt: 'Logo du Massage Thaï Traditionnel Aachen - Retour à la page d\'accueil'
             }
             // Add more languages here as needed
         };
@@ -30,6 +39,15 @@ class MainHeader extends HTMLElement {
                 gallery: 'gallery.html',
                 massages: 'massages.html',
                 prices: 'prices.html',
+                contact: 'contact.html',
+                basePath: '../'
+            },
+            'fr': {
+                home: 'accueil.html',
+                team: 'equipe.html',
+                gallery: 'galerie.html',
+                massages: 'massages.html',
+                prices: 'tarifs.html',
                 contact: 'contact.html',
                 basePath: '../'
             },
@@ -59,32 +77,115 @@ class MainHeader extends HTMLElement {
         const t = this.translations[lang];
         const p = this.paths[lang];
 
-        // Map of page translations for language switching
-        const pageTranslations = {
-            'index.html': 'index.html',
-            'team.html': 'team.html',
-            'galerie.html': 'gallery.html',
-            'gallery.html': 'galerie.html',
-            'massagen.html': 'massages.html',
-            'massages.html': 'massagen.html',
-            'preise.html': 'prices.html',
-            'prices.html': 'preise.html',
-            'kontakt.html': 'contact.html',
-            'contact.html': 'kontakt.html',
-            'impressum.html': 'legal-notice.html',
-            'legal-notice.html': 'impressum.html',
-            'datenschutz.html': 'privacy-policy.html',
-            'privacy-policy.html': 'datenschutz.html'
+        // Helper function to get correct page name for target language
+        const getTargetPage = (currentPage, targetLang) => {
+            // First, determine which page we're on
+            let basePage;
+            
+            // Handle home page variations
+            if (['index.html', 'accueil.html'].includes(currentPage)) {
+                basePage = 'home';
+            }
+            // Handle team page variations
+            else if (['team.html', 'equipe.html'].includes(currentPage)) {
+                basePage = 'team';
+            }
+            // Handle gallery page variations
+            else if (['gallery.html', 'galerie.html'].includes(currentPage)) {
+                basePage = 'gallery';
+            }
+            // Handle massages page variations
+            else if (['massages.html', 'massagen.html'].includes(currentPage)) {
+                basePage = 'massages';
+            }
+            // Handle prices page variations
+            else if (['prices.html', 'tarifs.html', 'preise.html'].includes(currentPage)) {
+                basePage = 'prices';
+            }
+            // Handle contact page variations
+            else if (['contact.html', 'kontakt.html'].includes(currentPage)) {
+                basePage = 'contact';
+            }
+            // Handle legal notice page variations
+            else if (['legal-notice.html', 'mentions-legales.html', 'impressum.html'].includes(currentPage)) {
+                basePage = 'legal';
+            }
+            // Handle privacy policy page variations
+            else if (['privacy-policy.html', 'politique-de-confidentialite.html', 'datenschutz.html'].includes(currentPage)) {
+                basePage = 'privacy';
+            }
+            else {
+                return currentPage; // If no match found, return original
+            }
+
+            // Now map the base page to the correct target language version
+            const pageMap = {
+                'home': {
+                    'en': 'index.html',
+                    'fr': 'accueil.html',
+                    'de': 'index.html'
+                },
+                'team': {
+                    'en': 'team.html',
+                    'fr': 'equipe.html',
+                    'de': 'team.html'
+                },
+                'gallery': {
+                    'en': 'gallery.html',
+                    'fr': 'galerie.html',
+                    'de': 'galerie.html'
+                },
+                'massages': {
+                    'en': 'massages.html',
+                    'fr': 'massages.html',
+                    'de': 'massagen.html'
+                },
+                'prices': {
+                    'en': 'prices.html',
+                    'fr': 'tarifs.html',
+                    'de': 'preise.html'
+                },
+                'contact': {
+                    'en': 'contact.html',
+                    'fr': 'contact.html',
+                    'de': 'kontakt.html'
+                },
+                'legal': {
+                    'en': 'legal-notice.html',
+                    'fr': 'mentions-legales.html',
+                    'de': 'impressum.html'
+                },
+                'privacy': {
+                    'en': 'privacy-policy.html',
+                    'fr': 'politique-de-confidentialite.html',
+                    'de': 'datenschutz.html'
+                }
+            };
+
+            return pageMap[basePage][targetLang];
         };
 
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-        const translatedPage = pageTranslations[currentPage] || currentPage;
+        console.log('Current page:', currentPage);
+
+        // Helper function to construct the correct URL for language switching
+        const getLanguageUrl = (targetLang) => {
+            const targetPage = getTargetPage(currentPage, targetLang);
+            
+            if (targetLang === 'de') {
+                return `/${targetPage}`; // German pages are at root
+            } else {
+                return `/${targetLang}/${targetPage}`; // Other languages in their respective folders
+            }
+        };
 
         const languageSwitcher = `
             <div class="language-switcher">
-                <a href="${lang !== 'de' ? `../${translatedPage}` : translatedPage}" class="me-2 ${lang === 'de' ? 'active' : ''}" lang="de">DE</a>
+                <a href="${getLanguageUrl('de')}" class="me-2 ${lang === 'de' ? 'active' : ''}" lang="de">DE</a>
                 |
-                <a href="${lang === 'en' ? translatedPage : `en/${translatedPage}`}" class="ms-2 me-2 ${lang === 'en' ? 'active' : ''}" lang="en">EN</a>
+                <a href="${getLanguageUrl('en')}" class="ms-2 me-2 ${lang === 'en' ? 'active' : ''}" lang="en">EN</a>
+                |
+                <a href="${getLanguageUrl('fr')}" class="ms-2 ${lang === 'fr' ? 'active' : ''}" lang="fr">FR</a>
             </div>
         `;
 
@@ -230,8 +331,8 @@ class MainFooter extends HTMLElement {
             'fr': {
                 home: 'index.html',
                 legal: 'mentions-legales.html',
-                privacy: 'politique-confidentialite.html',
-                basePath: '../fr/'
+                privacy: 'politique-de-confidentialite.html',
+                basePath: '../'
             }
         };
     }
@@ -253,6 +354,15 @@ class MainFooter extends HTMLElement {
         const phoneLink = lang === 'de' ? '024194377687' : '492419437687';
         const whatsappLink = '4915207070312';
 
+        // Helper function to construct correct paths for footer links
+        const getFooterLink = (page) => {
+            if (lang === 'de') {
+                return page; // German pages are at root
+            } else {
+                return `${lang}/${page}`; // Other languages in their respective folders
+            }
+        };
+
         this.innerHTML = `
         <style>
             .social-icon {
@@ -271,7 +381,7 @@ class MainFooter extends HTMLElement {
                 <!-- Logo -->
                 <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0">
                     <div class="d-flex justify-content-center">
-                        <a href="${p.basePath}${p.home}">
+                        <a href="${lang === 'de' ? p.home : `/${lang}/${p.home}`}">
                             <img
                                 src="${p.basePath}assets/img/logo/logo_header.png"
                                 alt="${t.logoAlt}"
@@ -297,12 +407,12 @@ class MainFooter extends HTMLElement {
                     <h5 class="text-uppercase">${t.links}</h5>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="${p.basePath}${p.legal}" class="text-dark">
+                            <a href="/${getFooterLink(p.legal)}" class="text-dark">
                                 ${t.legalNotice}
                             </a>
                         </li>
                         <li>
-                            <a href="${p.basePath}${p.privacy}" class="text-dark">
+                            <a href="/${getFooterLink(p.privacy)}" class="text-dark">
                                 ${t.privacyPolicy}
                             </a>
                         </li>
