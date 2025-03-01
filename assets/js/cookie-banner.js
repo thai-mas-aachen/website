@@ -10,6 +10,15 @@ class CookieBanner extends HTMLElement {
     }
 
     render() {
+        const isEnglish = document.documentElement.lang === 'en';
+        
+        const text = isEnglish 
+            ? 'This website uses cookies to improve your browsing experience and provide personalized content.'
+            : 'Diese Website verwendet Cookies, um Ihr Browsererlebnis zu verbessern und personalisierte Inhalte bereitzustellen.';
+        
+        const acceptText = isEnglish ? 'Accept' : 'Akzeptieren';
+        const rejectText = isEnglish ? 'Reject' : 'Ablehnen';
+
         this.shadowRoot.innerHTML = `
             <style>
                 .cookie-banner {
@@ -49,11 +58,11 @@ class CookieBanner extends HTMLElement {
             </style>
             <div class="cookie-banner">
                 <div class="cookie-text">
-                    Diese Website verwendet Cookies, um Ihr Browsererlebnis zu verbessern und personalisierte Inhalte bereitzustellen.
+                    ${text}
                 </div>
                 <div class="cookie-buttons">
-                    <button class="accept">Akzeptieren</button>
-                    <button class="reject">Ablehnen</button>
+                    <button class="accept">${acceptText}</button>
+                    <button class="reject">${rejectText}</button>
                 </div>
             </div>
         `;

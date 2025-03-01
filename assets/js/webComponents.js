@@ -1,60 +1,120 @@
 class MainHeader extends HTMLElement {
     connectedCallback() {
-        this.innerHTML = `
-        <nav class="navbar navbar-expand-md navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img
-                    src="assets/img/logo/logo_header.png"
-                    alt="Logo der Traditionellen Thaimassage Aachen - Zurück zur Startseite"
-                    width="auto"
-                    height="100"
-                    class="d-inline-block align-top"
-                />
-            </a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="team.html">Unser Team</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="galerie.html">Galerie</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="massagen.html">Massagen</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="preise.html">Preise</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="kontakt.html">Kontakt</a>
-                    </li>
-                </ul>
+        // Determine if we're in the English version
+        const isEnglish = window.location.pathname.includes('/en/');
+        const basePath = isEnglish ? '../' : '';
+
+        // Map of page translations for language switching
+        const pageTranslations = {
+            'index.html': 'index.html',
+            'team.html': 'team.html',
+            'galerie.html': 'gallery.html',
+            'gallery.html': 'galerie.html',
+            'massagen.html': 'massages.html',
+            'massages.html': 'massagen.html',
+            'preise.html': 'prices.html',
+            'prices.html': 'preise.html',
+            'kontakt.html': 'contact.html',
+            'contact.html': 'kontakt.html',
+            'impressum.html': 'legal-notice.html',
+            'legal-notice.html': 'impressum.html',
+            'datenschutz.html': 'privacy-policy.html',
+            'privacy-policy.html': 'datenschutz.html'
+        };
+
+        // Get current page name from URL
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const translatedPage = pageTranslations[currentPage] || currentPage;
+
+        const languageSwitcher = `
+            <div class="language-switcher">
+                <a href="${isEnglish ? `../${translatedPage}` : translatedPage}" class="me-2 ${!isEnglish ? 'active' : ''}" lang="de">DE</a>
+                |
+                <a href="${isEnglish ? translatedPage : `en/${translatedPage}`}" class="ms-2 ${isEnglish ? 'active' : ''}" lang="en">EN</a>
             </div>
-        </div>
-    </nav>
+        `;
+
+        const styles = `
+            .language-switcher {
+                position: absolute;
+                top: 10px;
+                right: 20px;
+            }
+            .language-switcher a {
+                text-decoration: none;
+                color: #333;
+            }
+            .language-switcher a.active {
+                font-weight: bold;
+            }
+        `;
+
+        // Define navigation items for both languages
+        const navItems = isEnglish ? [
+            { href: "index.html", text: "Home" },
+            { href: "team.html", text: "Our Team" },
+            { href: "gallery.html", text: "Gallery" },
+            { href: "massages.html", text: "Massages" },
+            { href: "prices.html", text: "Prices" },
+            { href: "contact.html", text: "Contact" }
+        ] : [
+            { href: "index.html", text: "Home" },
+            { href: "team.html", text: "Unser Team" },
+            { href: "galerie.html", text: "Galerie" },
+            { href: "massagen.html", text: "Massagen" },
+            { href: "preise.html", text: "Preise" },
+            { href: "kontakt.html", text: "Kontakt" }
+        ];
+
+        // Generate navigation HTML
+        const navHTML = navItems.map(item => `
+            <li class="nav-item">
+                <a class="nav-link" href="${item.href}">${item.text}</a>
+            </li>
+        `).join('');
+
+        this.innerHTML = `
+            <style>
+                ${styles}
+            </style>
+            <nav class="navbar navbar-expand-md navbar-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="${isEnglish ? 'index.html' : 'index.html'}">
+                        <img
+                            src="${basePath}assets/img/logo/logo_header.png"
+                            alt="${isEnglish ? 'Traditional Thai Massage Aachen Logo - Back to Homepage' : 'Logo der Traditionellen Thaimassage Aachen - Zurück zur Startseite'}"
+                            width="auto"
+                            height="100"
+                            class="d-inline-block align-top"
+                        />
+                    </a>
+                    ${languageSwitcher}
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            ${navHTML}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         `;
         this.setActiveLink();
     }
     setActiveLink() {
         const links = this.querySelectorAll(".nav-link");
-        const currentUrl = window.location.pathname.replace("/", "");
+        const currentUrl = window.location.pathname.split('/').pop() || 'index.html';
         links.forEach((link) => {
-            if (currentUrl.endsWith(link.getAttribute("href"))) {
+            if (currentUrl === link.getAttribute("href")) {
                 link.classList.add("active", "fw-bold", "text-decoration-underline");
             }
         });
@@ -64,6 +124,16 @@ customElements.define("main-header", MainHeader);
 
 class MainFooter extends HTMLElement {
     connectedCallback() {
+        // Determine if we're in the English version
+        const isEnglish = window.location.pathname.includes('/en/');
+        const basePath = isEnglish ? '../' : '';
+
+        // Phone number formats
+        const phoneDisplay = isEnglish ? '+49 241 9437 7687' : '0241 9437 7687';
+        const whatsappDisplay = isEnglish ? '+49 152 0707 0312' : '0152 0707 0312';
+        const phoneLink = isEnglish ? '+492419437687' : '024194377687';
+        const whatsappLink = isEnglish ? '4915207070312' : '4915207070312';
+
         this.innerHTML = `
         <style>
           .social-icon {
@@ -82,10 +152,10 @@ class MainFooter extends HTMLElement {
             <!-- Logo -->
             <div class="col-12 col-md-6 col-lg-3 mb-4 mb-md-0">
                 <div class="d-flex justify-content-center">
-                    <a href="index.html">
+                    <a href="${isEnglish ? 'index.html' : 'index.html'}">
                     <img
-                        src="assets/img/logo/logo_header.png"
-                        alt="Traditionelle Thaimassage Aachen Logo"
+                        src="${basePath}assets/img/logo/logo_header.png"
+                        alt="${isEnglish ? 'Traditional Thai Massage Aachen Logo' : 'Traditionelle Thaimassage Aachen Logo'}"
                         class="img-fluid"
                     />
                     </a>
@@ -97,41 +167,46 @@ class MainFooter extends HTMLElement {
                 <address>
                 <strong>Alexanderstraße 121</strong><br />
                 52062 Aachen<br />
-                Telefon: <a href="tel:024194377687">0241 9437 7687</a><br />
-                Whatsapp: <a href="https://wa.me/4915207070312">0152 0707 0312</a>
+                ${isEnglish ? 'Germany' : 'Deutschland'}<br />
+                ${isEnglish ? 'Phone' : 'Telefon'}: <a href="tel:${phoneLink}">${phoneDisplay}</a><br />
+                WhatsApp: <a href="https://wa.me/${whatsappLink}">${whatsappDisplay}</a>
                 </address>
             </div>
 
             <!-- Additional Links -->
             <div class="col-12 col-md-6 col-lg-2 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Links</h5>
+                <h5 class="text-uppercase">${isEnglish ? 'Links' : 'Links'}</h5>
                 <ul class="list-unstyled">
                 <li>
-                    <a href="impressum.html" class="text-dark">Impressum</a>
+                    <a href="${isEnglish ? '../en/legal-notice.html' : 'impressum.html'}" class="text-dark">
+                        ${isEnglish ? 'Legal Notice' : 'Impressum'}
+                    </a>
                 </li>
                 <li>
-                    <a href="datenschutz.html" class="text-dark">Datenschutz</a>
+                    <a href="${isEnglish ? '../en/privacy-policy.html' : 'datenschutz.html'}" class="text-dark">
+                        ${isEnglish ? 'Privacy Policy' : 'Datenschutz'}
+                    </a>
                 </li>
                 </ul>
             </div>
 
             <!-- Social Links -->
             <div class="col-12 col-md-3 col-lg-2 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Folgen Sie uns</h5>
+                <h5 class="text-uppercase">${isEnglish ? 'Follow Us' : 'Folgen Sie uns'}</h5>
                 <div>
                     <a
                     href="https://www.facebook.com/people/Traditionelle-Thaimassage-Aachen/pfbid0fnNC5fuuMnZFq6NEzJ8NbzGBH1i9cBBH9R8xRTtf5bp4WxiMzCgnFoMsnKXbARHEl/"
                     class="me-4"
                     target="_blank"
                     >
-                    <img src="assets/img/logo/facebook-logo.png" alt="Facebook" class="social-icon">
+                    <img src="${basePath}assets/img/logo/facebook-logo.png" alt="Facebook" class="social-icon">
                     </a>
                     <a
                     href="https://www.instagram.com/traditionellethaimassageaachen/"
                     class="me-4"
                     target="_blank"
                     >
-                    <img src="assets/img/logo/instagram-logo.png" alt="Instagram" class="social-icon">
+                    <img src="${basePath}assets/img/logo/instagram-logo.png" alt="Instagram" class="social-icon">
                     </a>
                 </div>
             </div>
@@ -147,7 +222,7 @@ class MainFooter extends HTMLElement {
 
         <!-- Copyright -->
         <div class="text-center p-3 bg-light">
-            © <span id="current-year"></span> Traditionelle Thaimassage Aachen
+            © <span id="current-year"></span> ${isEnglish ? 'Traditional Thai Massage Aachen' : 'Traditionelle Thaimassage Aachen'}
         </div>
     `;
 
@@ -156,28 +231,6 @@ class MainFooter extends HTMLElement {
         if (yearElement) {
             yearElement.textContent = new Date().getFullYear();
         }
-
-        const structuredData = document.createElement('script');
-        structuredData.type = 'application/ld+json';
-        structuredData.textContent = JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "Traditionelle Thaimassage Aachen",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Alexanderstraße 121",
-                "addressLocality": "Aachen",
-                "postalCode": "52062",
-                "addressCountry": "DE"
-            },
-            "telephone": "+4924194377687",
-            "url": "https://www.thai-massage-aachen.de",
-            "sameAs": [
-                "https://www.facebook.com/people/Traditionelle-Thaimassage-Aachen/pfbid0fnNC5fuuMnZFq6NEzJ8NbzGBH1i9cBBH9R8xRTtf5bp4WxiMzCgnFoMsnKXbARHEl/",
-                "https://www.instagram.com/traditionellethaimassageaachen/"
-            ]
-        });
-        this.appendChild(structuredData);
     }
 }
 customElements.define("main-footer", MainFooter);
