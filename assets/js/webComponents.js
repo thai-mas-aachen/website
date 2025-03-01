@@ -6,7 +6,7 @@ class MainHeader extends HTMLElement {
             <a class="navbar-brand" href="index.html">
                 <img
                     src="assets/img/logo/logo_header.png"
-                    alt=""
+                    alt="Logo der Traditionellen Thaimassage Aachen - Zurück zur Startseite"
                     width="auto"
                     height="100"
                     class="d-inline-block align-top"
