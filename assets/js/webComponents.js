@@ -284,7 +284,6 @@ class MainFooter extends HTMLElement {
                 followUs: 'Follow Us',
                 businessName: 'Traditional Thai Massage Aachen',
                 phoneNumber: '+49 241 9437 7687',
-                whatsappNumber: '+49 152 0707 0312',
                 logoAlt: 'Traditional Thai Massage Aachen Logo'
             },
             'de': {
@@ -296,7 +295,6 @@ class MainFooter extends HTMLElement {
                 followUs: 'Folgen Sie uns',
                 businessName: 'Traditionelle Thaimassage Aachen',
                 phoneNumber: '0241 9437 7687',
-                whatsappNumber: '0152 0707 0312',
                 logoAlt: 'Traditionelle Thaimassage Aachen Logo'
             },
             // Add more languages here as needed
@@ -309,7 +307,6 @@ class MainFooter extends HTMLElement {
                 followUs: 'Suivez-nous',
                 businessName: 'Massage Thaï Traditionnel Aachen',
                 phoneNumber: '+49 241 9437 7687',
-                whatsappNumber: '+49 152 0707 0312',
                 logoAlt: 'Logo Massage Thaï Traditionnel Aachen'
             }
         };
@@ -352,7 +349,6 @@ class MainFooter extends HTMLElement {
 
         // Phone number formats for links
         const phoneLink = lang === 'de' ? '024194377687' : '492419437687';
-        const whatsappLink = '4915207070312';
 
         // Helper function to construct correct paths for footer links
         const getFooterLink = (page) => {
@@ -397,8 +393,7 @@ class MainFooter extends HTMLElement {
                         <strong>Alexanderstraße 121</strong><br />
                         52062 Aachen<br />
                         ${t.country}<br />
-                        ${t.phone}: <a href="tel:${phoneLink}">${t.phoneNumber}</a><br />
-                        WhatsApp: <a href="https://wa.me/${whatsappLink}">${t.whatsappNumber}</a>
+                        ${t.phone}: <a href="tel:${phoneLink}">${t.phoneNumber}</a>
                     </address>
                 </div>
 
