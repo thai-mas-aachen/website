@@ -8,6 +8,12 @@
   <meta http-equiv="content-language" content="en">
   <meta name="description"
     content="Photo gallery of Thai Massage Aachen ➤ Modern facilities ✓ Relaxing atmosphere ✓ Professional equipment ✓ Virtual practice tour">
+  <meta name="keywords" content="Thai massage gallery, massage photos, practice rooms, Thai decor, massage atmosphere, massage voucher, Thai tea, massage Aachen photos">
+  <meta property="og:title" content="Gallery & Impressions | Traditional Thai Massage Aachen">
+  <meta property="og:description" content="Photo gallery: Discover our practice, relaxing atmosphere, modern rooms and lovely details of Thai Massage Aachen.">
+  <meta property="og:image" content="https://www.thai-massage-aachen.de/assets/img/gallery/entry.webp">
+  <meta property="og:url" content="https://www.thai-massage-aachen.de/en/gallery.html">
+  <meta property="og:type" content="website">
   <!-- Add canonical URL -->
   <link rel="canonical" href="https://www.thai-massage-aachen.de/en/gallery.html" />
   <link rel="alternate" hreflang="de" href="https://www.thai-massage-aachen.de/galerie.html" />
@@ -23,10 +29,13 @@
   <!-- CSS -->
   <link href="../css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
   <!-- JavaScript -->
   <script src="../assets/js/webComponents.js"></script>
   <script src="../assets/js/cookie-banner.js"></script>
   <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',function(){GLightbox({selector:'.glightbox'});});</script>
   <!-- Custom Styles -->
   <style>
     .gallery-image-container {
@@ -39,7 +48,44 @@
       height: 100%;
       width: 100%;
     }
+
+    .gallery-caption {
+      text-align: center;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+      color: #444;
+    }
+
+    .cta-section {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .cta-section a.btn {
+      margin: 0.5rem;
+    }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": "Thai Massage Aachen Gallery",
+    "description": "Photo gallery of the practice, rooms and atmosphere of Thai Massage Aachen.",
+    "image": [
+      "https://www.thai-massage-aachen.de/assets/img/gallery/entry.webp",
+      "https://www.thai-massage-aachen.de/assets/img/gallery/corridor.webp",
+      "https://www.thai-massage-aachen.de/assets/img/gallery/corridor2.webp",
+      "https://www.thai-massage-aachen.de/assets/img/gallery/single_room.webp",
+      "https://www.thai-massage-aachen.de/assets/img/gallery/double_room.webp",
+      "https://www.thai-massage-aachen.de/assets/img/gallery/floor.webp",
+      "https://www.thai-massage-aachen.de/assets/img/gallery/tea.webp",
+      "https://www.thai-massage-aachen.de/assets/img/gallery/coupon.webp"
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -48,62 +94,101 @@
   <!-- Main content of your page -->
   <main class="pt-md-5 pt-3 pb-5">
     <div class="container">
-      <h1 class="text-center pb-md-5">Our store</h1>
+      <h1 class="text-center pb-md-3">Our Gallery</h1>
+      <p class="lead text-center mb-5">Insights into our practice, atmosphere and lovely details – click on an image for a larger view.</p>
       <div class="row">
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/entry.webp" class="img-fluid gallery-image"
-              alt="Welcoming entrance area of our Thai massage practice" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/entry.webp" class="glightbox" data-gallery="gallery" title="Welcoming entrance area">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/entry.webp" class="img-fluid gallery-image"
+                alt="Welcoming entrance area of our Thai massage practice" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Welcoming entrance area</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/corridor.webp" class="img-fluid gallery-image"
-              alt="Harmoniously designed corridor with traditional massage beds" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/corridor.webp" class="glightbox" data-gallery="gallery" title="Harmoniously designed corridor">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/corridor.webp" class="img-fluid gallery-image"
+                alt="Harmoniously designed corridor with traditional massage beds" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Harmoniously designed corridor</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/corridor2.webp" class="img-fluid gallery-image"
-              alt="Professionally equipped treatment area with multiple massage beds" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/corridor2.webp" class="glightbox" data-gallery="gallery" title="Treatment area with multiple beds">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/corridor2.webp" class="img-fluid gallery-image"
+                alt="Professionally equipped treatment area with multiple massage beds" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Treatment area with multiple beds</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/single_room.webp" class="img-fluid gallery-image"
-              alt="Private single treatment room with cozy atmosphere" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/single_room.webp" class="glightbox" data-gallery="gallery" title="Private single treatment room">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/single_room.webp" class="img-fluid gallery-image"
+                alt="Private single treatment room with cozy atmosphere" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Private single treatment room</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/double_room.webp" class="img-fluid gallery-image"
-              alt="Spacious double treatment room for couple massages" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/double_room.webp" class="glightbox" data-gallery="gallery" title="Spacious double treatment room">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/double_room.webp" class="img-fluid gallery-image"
+                alt="Spacious double treatment room for couple massages" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Spacious double treatment room</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/floor.webp" class="img-fluid gallery-image"
-              alt="Stylish passage area with traditional Thai decoration" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/floor.webp" class="glightbox" data-gallery="gallery" title="Stylish passage area">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/floor.webp" class="img-fluid gallery-image"
+                alt="Stylish passage area with traditional Thai decoration" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Stylish passage area</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/tea.webp" class="img-fluid gallery-image"
-              alt="Traditional Thai tea for relaxation after the massage" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/tea.webp" class="glightbox" data-gallery="gallery" title="Traditional Thai tea">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/tea.webp" class="img-fluid gallery-image"
+                alt="Traditional Thai tea for relaxation after the massage" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Traditional Thai tea</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/coupon.webp" class="img-fluid gallery-image"
-              alt="Gift vouchers for Thai massage treatments in various designs" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/coupon.webp" class="glightbox" data-gallery="gallery" title="Gift vouchers for Thai massage">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/coupon.webp" class="img-fluid gallery-image"
+                alt="Gift vouchers for Thai massage treatments in various designs" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Gift vouchers for Thai massage</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/card.webp" class="img-fluid gallery-image"
-              alt="Accepted payment methods: Various credit and debit cards" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/card.webp" class="glightbox" data-gallery="gallery" title="5-session card for frequent users">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/card.webp" class="img-fluid gallery-image"
+                alt="5-session card for frequent users of Thai massage" loading="lazy" />
+            </div>
+            <div class="gallery-caption">5-session card for frequent users</div>
+          </a>
         </div>
+      </div>
+      <div class="cta-section mt-5" aria-label="Call to Action">
+        <h2>Ready to relax?</h2>
+        <p>Book your traditional Thai massage now or discover our <a href="massages.html">massage offers</a> and <a
+            href="prices.html">prices</a>.</p>
+        <a href="contact.html" class="btn btn-primary" aria-label="Book appointment">Book appointment</a>
+        <a href="massages.html" class="btn btn-outline-secondary" aria-label="See massages">See massages</a>
+      </div>
+      <div class="text-center mt-4">
+        <a href="../index.html">Home</a> | <a href="massages.html">Massages</a> | <a href="prices.html">Prices</a> | <a
+          href="contact.html">Contact</a>
       </div>
     </div>
   </main>

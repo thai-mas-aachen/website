@@ -7,26 +7,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="content-language" content="fr">
   <meta name="description"
-    content="Galerie photos du Massage Thaï Traditionnel Aix-la-Chapelle ➤ Installations modernes ✓ Atmosphère relaxante ✓ Équipement professionnel">
+    content="Galerie photos du Massage Thaï Traditionnel Aix-la-Chapelle ➤ Installations modernes ✓ Atmosphère relaxante ✓ Équipement professionnel ✓ Visite virtuelle du cabinet">
+  <meta name="keywords" content="galerie massage thaï, photos massage, cabinet massage, déco thaï, ambiance massage, bon cadeau massage, thé thaï, massage Aix-la-Chapelle photos">
+  <meta property="og:title" content="Galerie & Impressions | Massage Thaï Traditionnel Aix-la-Chapelle">
+  <meta property="og:description" content="Galerie photos : découvrez notre cabinet, l'ambiance relaxante, les salles modernes et les détails soignés du Massage Thaï à Aix-la-Chapelle.">
+  <meta property="og:image" content="https://www.thai-massage-aachen.de/assets/img/gallery/entry.webp">
+  <meta property="og:url" content="https://www.thai-massage-aachen.de/fr/galerie.html">
+  <meta property="og:type" content="website">
   <!-- Add canonical URL -->
   <link rel="canonical" href="https://www.thai-massage-aachen.de/fr/galerie.html" />
   <link rel="alternate" hreflang="de" href="https://www.thai-massage-aachen.de/galerie.html" />
   <link rel="alternate" hreflang="en" href="https://www.thai-massage-aachen.de/en/gallery.html" />
   <link rel="alternate" hreflang="fr" href="https://www.thai-massage-aachen.de/fr/galerie.html" />
   <title>Galerie & Impressions | Massage Thaï Traditionnel Aix-la-Chapelle</title>
-  <!-- CSS -->
-  <link href="../css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css" rel="stylesheet" />
   <!-- Favicons -->
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
   <link rel="manifest" href="../assets/img/favicon/site.webmanifest">
   <link rel="shortcut icon" href="../assets/img/favicon/favicon.ico">
+  <!-- CSS -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
   <!-- JavaScript -->
   <script src="../assets/js/webComponents.js"></script>
   <script src="../assets/js/cookie-banner.js"></script>
   <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      GLightbox({ selector: '.glightbox' });
+    });
+  </script>
   <!-- Custom Styles -->
   <style>
     .gallery-image-container {
@@ -39,7 +52,44 @@
       height: 100%;
       width: 100%;
     }
+
+    .gallery-caption {
+      text-align: center;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+      color: #444;
+    }
+
+    .cta-section {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .cta-section a.btn {
+      margin: 0.5rem;
+    }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": "Galerie Massage Thaï Aix-la-Chapelle",
+    "description": "Galerie photos du cabinet, des salles et de l'ambiance du Massage Thaï à Aix-la-Chapelle.",
+    "image": [
+      "https://www.thai-massage-aachen.de/assets/img/gallery/entry.webp",
+      "https://www.thai-massage-aachen.de/assets/img/gallery/corridor.webp",
+      "https://www.thai-massage-aachen.de/assets/img/gallery/corridor2.webp",
+      "https://www.thai-massage-aachen.de/assets/img/gallery/single_room.webp",
+      "https://www.thai-massage-aachen.de/assets/img/gallery/double_room.webp",
+      "https://www.thai-massage-aachen.de/assets/img/gallery/floor.webp",
+      "https://www.thai-massage-aachen.de/assets/img/gallery/tea.webp",
+      "https://www.thai-massage-aachen.de/assets/img/gallery/coupon.webp"
+    ]
+  }
+  </script>
 </head>
 
 <body>
@@ -48,62 +98,107 @@
   <!-- Main content of your page -->
   <main class="pt-md-5 pt-3 pb-5">
     <div class="container">
-      <h1 class="text-center pb-md-5">Notre cabinet</h1>
+      <h1 class="text-center pb-md-3">Notre galerie</h1>
+      <p class="lead text-center mb-5">Aperçu de notre cabinet, de l'ambiance et des détails soignés – cliquez sur une image pour l'agrandir.</p>
       <div class="row">
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/entry.webp" class="img-fluid gallery-image"
-              alt="Zone d'entrée accueillante de notre cabinet de massage thaï" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/entry.webp" class="glightbox" data-gallery="galerie"
+            title="Zone d'entrée accueillante">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/entry.webp" class="img-fluid gallery-image"
+                alt="Zone d'entrée accueillante de notre cabinet de massage thaï" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Zone d'entrée accueillante</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/corridor.webp" class="img-fluid gallery-image"
-              alt="Couloir harmonieusement aménagé avec des tables de massage traditionnelles" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/corridor.webp" class="glightbox" data-gallery="galerie"
+            title="Couloir harmonieusement aménagé">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/corridor.webp" class="img-fluid gallery-image"
+                alt="Couloir harmonieusement aménagé avec des tables de massage traditionnelles" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Couloir harmonieusement aménagé</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/corridor2.webp" class="img-fluid gallery-image"
-              alt="Espace de traitement professionnel avec plusieurs tables de massage" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/corridor2.webp" class="glightbox" data-gallery="galerie"
+            title="Espace de traitement professionnel">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/corridor2.webp" class="img-fluid gallery-image"
+                alt="Espace de traitement professionnel avec plusieurs tables de massage" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Espace de traitement professionnel</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/single_room.webp" class="img-fluid gallery-image"
-              alt="Salle de traitement individuelle avec une atmosphère chaleureuse" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/single_room.webp" class="glightbox" data-gallery="galerie"
+            title="Salle de traitement individuelle">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/single_room.webp" class="img-fluid gallery-image"
+                alt="Salle de traitement individuelle avec une atmosphère chaleureuse" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Salle de traitement individuelle</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/double_room.webp" class="img-fluid gallery-image"
-              alt="Salle de traitement double spacieuse pour les massages en couple" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/double_room.webp" class="glightbox" data-gallery="galerie"
+            title="Salle de traitement double spacieuse">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/double_room.webp" class="img-fluid gallery-image"
+                alt="Salle de traitement double spacieuse pour les massages en couple" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Salle de traitement double spacieuse</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/floor.webp" class="img-fluid gallery-image"
-              alt="Zone de passage élégante avec décoration thaïe traditionnelle" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/floor.webp" class="glightbox" data-gallery="galerie"
+            title="Zone de passage élégante">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/floor.webp" class="img-fluid gallery-image"
+                alt="Zone de passage élégante avec décoration thaïe traditionnelle" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Zone de passage élégante</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/tea.webp" class="img-fluid gallery-image"
-              alt="Thé thaï traditionnel pour la relaxation après le massage" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/tea.webp" class="glightbox" data-gallery="galerie"
+            title="Thé thaï traditionnel">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/tea.webp" class="img-fluid gallery-image"
+                alt="Thé thaï traditionnel pour la relaxation après le massage" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Thé thaï traditionnel</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/coupon.webp" class="img-fluid gallery-image"
-              alt="Bons cadeaux pour les séances de massage thaï en différents designs" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/coupon.webp" class="glightbox" data-gallery="galerie"
+            title="Bons cadeaux massage thaï">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/coupon.webp" class="img-fluid gallery-image"
+                alt="Bons cadeaux pour les séances de massage thaï en différents designs" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Bons cadeaux massage thaï</div>
+          </a>
         </div>
         <div class="col-md-4 mb-4">
-          <div class="gallery-image-container">
-            <img src="../assets/img/gallery/card.webp" class="img-fluid gallery-image"
-              alt="Moyens de paiement acceptés : Diverses cartes de crédit et de débit" loading="lazy" />
-          </div>
+          <a href="../assets/img/gallery/card.webp" class="glightbox" data-gallery="galerie" title="Carte 5 séances pour habitués">
+            <div class="gallery-image-container">
+              <img src="../assets/img/gallery/card.webp" class="img-fluid gallery-image"
+                alt="Carte 5 séances pour les clients réguliers du massage thaï" loading="lazy" />
+            </div>
+            <div class="gallery-caption">Carte 5 séances pour habitués</div>
+          </a>
         </div>
+      </div>
+      <div class="cta-section mt-5" aria-label="Appel à l'action">
+        <h2>Envie de détente ?</h2>
+        <p>Réservez votre massage thaï traditionnel dès maintenant ou découvrez nos <a href="massages.html">offres de massage</a> et <a href="tarifs.html">tarifs</a>.</p>
+        <a href="contact.html" class="btn btn-primary" aria-label="Prendre rendez-vous">Prendre rendez-vous</a>
+        <a href="massages.html" class="btn btn-outline-secondary" aria-label="Voir les massages">Voir les massages</a>
+      </div>
+      <div class="text-center mt-4">
+        <a href="../accueil.html">Accueil</a> | <a href="massages.html">Massages</a> | <a href="tarifs.html">Tarifs</a> | <a href="contact.html">Contact</a>
       </div>
     </div>
   </main>
