@@ -171,11 +171,13 @@ class MainHeader extends HTMLElement {
         // Helper function to construct the correct URL for language switching
         const getLanguageUrl = (targetLang) => {
             const targetPage = getTargetPage(currentPage, targetLang);
-            
-            if (targetLang === 'de') {
-                return `/${targetPage}`; // German pages are at root
+            // Wenn Deutsch und Startseite, dann immer auf Root verlinken
+            if (targetLang === 'de' && (targetPage === 'index.html' || targetPage === '')) {
+                return '/';
+            } else if (targetLang === 'de') {
+                return `/${targetPage}`; // Deutsche Seiten im Root
             } else {
-                return `/${targetLang}/${targetPage}`; // Other languages in their respective folders
+                return `/${targetLang}/${targetPage}`; // Andere Sprachen im jeweiligen Ordner
             }
         };
 
@@ -215,11 +217,14 @@ class MainHeader extends HTMLElement {
         ];
 
         // Generate navigation HTML
-        const navHTML = navItems.map(item => `
-            <li class="nav-item">
-                <a class="nav-link" href="${item.href}">${item.text}</a>
-            </li>
-        `).join('');
+        const navHTML = navItems.map(item => {
+            // Für Home-Link in Deutsch immer auf Root verlinken
+            if (item.href === p.home && lang === 'de') {
+                return `<li class="nav-item"><a class="nav-link" href="/">${item.text}</a></li>`;
+            } else {
+                return `<li class="nav-item"><a class="nav-link" href="${item.href}">${item.text}</a></li>`;
+            }
+        }).join('');
 
         this.innerHTML = `
             <style>
@@ -227,7 +232,7 @@ class MainHeader extends HTMLElement {
             </style>
             <nav class="navbar navbar-expand-md navbar-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="${p.home}">
+                    <a class="navbar-brand" href="${lang === 'de' ? '/' : p.home}">
                         <img
                             src="${p.basePath}assets/img/logo/logo_header.png"
                             alt="${t.logoAlt}"
